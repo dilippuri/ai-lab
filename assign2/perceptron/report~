@@ -1,0 +1,15 @@
+# Created by Octave 3.8.1, Mon Feb 01 21:57:37 2016 IST <dilip@dilip-notebook-pc>
+# name: err_in
+# type: matrix
+# rows: 1
+# columns: 10
+ 0.6636363636363637 0.3363636363636364 0.3363636363636364 0.3363636363636364 0.3636363636363637 0.3363636363636364 0 0 0 0
+
+
+# name: err_out
+# type: matrix
+# rows: 1
+# columns: 10
+ 0.475 0.525 0.525 0.525 0.35 0.525 0 0 0 0
+
+

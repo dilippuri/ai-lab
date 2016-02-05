@@ -1,0 +1,52 @@
+clear all;
+close all;
+data = load('iris_data.txt'); %load data into data matrix
+
+[iris_row iris_col]=size(data); %size of input data
+train=iris_row*(11/15);	%train ratio
+test=iris_row*(4/15);	%test ratio
+
+w=rand(1,13); %initialize random weight
+w_update=w;
+err_in(1) = 0;
+err_out(1) = 0;
+
+for n=1:10
+ein=0;
+				%training data
+for i=1:train
+	x=data(i,1:4);
+	z=[1 x(1) x(2) x(3) x(4) x(1)*x(2) x(2)*x(3) x(3)*x(4) x(4)*x(1) x(1)^2 x(2)^2 x(3)^2 x(4)^2];
+	h=sign(w*z');
+	y=data(i,5);
+	if(y!=h)
+		w_update = w_update + y*z;
+		ein++;
+	endif
+endfor
+err_in(n)=ein/train;
+eout=0;
+				%testing data
+for i=1:test
+	x=data(i,1:4);
+	z=[1 x(1) x(2) x(3) x(4) x(1)*x(2) x(2)*x(3) x(3)*x(4) x(4)*x(1) x(1)^2 x(2)^2 x(3)^2 x(4)^2];
+	h=sign(w*z');
+	y=data(i,5);
+	if(y!=h)
+		eout++;
+	endif
+endfor
+err_out(n)=eout/test;
+
+w=w_update;
+endfor
+plot(err_in,"-;E_in;","color",'r');
+hold on;
+plot(err_in,"*","color",'r');
+hold on;
+plot(err_out,":;E_out;","color",'k');
+hold on;
+plot(err_out,"d","color",'k');
+xlabel("No. of iteration");
+ylabel("E_in/E_out");
+title("Evoluation of E_in and E_out");

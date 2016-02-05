@@ -1,0 +1,10 @@
+clear all;
+close all;
+data = load('iris_data.txt'); %load data into data matrix
+[iris_row iris_col]=size(data); %size of input data
+
+for i=1:iris_row
+	x=data(i,1:4);
+	z=[1 x(1) x(2) x(3) x(4) x(1)*x(2) x(2)*x(3) x(3)*x(4) x(4)*x(1) x(1)^2 x(2)^2 x(3)^2 x(4)^2];
+save -append -text  extended_iris_data.txt z
+end

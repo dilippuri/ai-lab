@@ -1,0 +1,35 @@
+# Created by Octave 3.8.1, Fri Feb 05 01:47:32 2016 IST <dilip@dilip-notebook-pc>
+# name: datasize
+# type: matrix
+# rows: 1
+# columns: 2
+ 150 5
+
+
+# name: train_test_ratio
+# type: matrix
+# rows: 1
+# columns: 2
+ 0.7 0.3
+
+
+# name: weight_initial
+# type: range
+# base, length, increment
+10 4 0
+
+
+# name: err_in
+# type: matrix
+# rows: 1
+# columns: 10
+ 0.6476190476190476 0.3523809523809524 0.3523809523809524 0.3523809523809524 0.6476190476190476 0.3523809523809524 0.3523809523809524 0 0 0
+
+
+# name: err_out
+# type: matrix
+# rows: 1
+# columns: 10
+ 0.5333333333333333 0.4666666666666667 0.4666666666666667 0.4666666666666667 0.5333333333333333 0.4666666666666667 0.4666666666666667 0 0 0
+
+
