@@ -6,7 +6,7 @@ data = load('iris_data.txt'); 					%load data into data matrix
 
 num_of_iteration=10;						%number of iteration
 train=iris_row*(.7);						%train ratio
-test=iris_row*(.3);						%test ratio
+test=iris_row*(.3)+train;						%test ratio
 
 w=rand(1,iris_col);						%initialize random weight
 w_update=w;
@@ -18,13 +18,13 @@ for i=1:train					 		%training data
 	h=sign(w*x');
 	y=data(i,5);
 	if(y!=h)	
-		w_update = w_update + y*x;			%update weight vector
+		w_update = w_update + y*(1)*x;			%update weight vector
 		ein++;
 	endif
 endfor
 err_in(n)=ein/train;
 	eout=0;					
-for i=1:test							%testing on data
+for i=train:test							%testing on data
 
 	x=[1 data(i,1:4)];
 	h=sign(w*x');
@@ -40,7 +40,7 @@ err_out(n)=eout/test;
 	endif
 
 endfor
-
+save -text pocket.txt w;
 plot(err_in,"-;Ein;","color",'r');				%plotting graph
 hold on;
 plot(err_out,"d","color",'k');

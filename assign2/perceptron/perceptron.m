@@ -7,19 +7,19 @@ datasize=[iris_row iris_col];
 save -text perceptron.txt datasize;
 
 train=iris_row*(.7);	%train ratio
-test=iris_row*(.3);	%test ratio
+test=iris_row*(.3)+train;	%test ratio
 train_test_ratio=[train/iris_row test/iris_row];
 save -append -text perceptron.txt train_test_ratio;
 
-%w=rand(1,iris_col); %initialize random weight
-w=100*ones(1,iris_col-1);
+w=rand(1,iris_col-1); %initialize random weight
+%w=ones(1,iris_col);
 w_update=w;
 weight_initial=w_update(1,:);
 %dlmwrite("weight.txt", weight_initial,"-append");
 save -append -text perceptron.txt weight_initial;
 err_in(1) = 0;
 err_out(1) = 0;
-for n=1:10
+for n=1:25
 ein=0;
 				%training data
 for i=1:train
@@ -27,14 +27,14 @@ for i=1:train
 	h=sign(w*x');
 	y=data(i,iris_col);
 	if(y!=h)
-		w_update = w_update + y*x;
+		w_update = w_update + y*(1)*x;
 		ein++;
 	endif
 endfor
 err_in(n)=ein/train;
 eout=0;
 				%testing data
-for i=1:test
+for i=train:test
 	x=[data(i,1:iris_col-1)];
 	h=sign(w*x');
 	y=data(i,iris_col);

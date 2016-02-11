@@ -1,0 +1,8 @@
+# Created by Octave 3.8.1, Thu Feb 11 15:09:27 2016 IST <dilip@dilip-notebook-pc>
+# name: w
+# type: matrix
+# rows: 1
+# columns: 5
+ 1.119988521731509 2.233571761441427 5.134642437598045 -7.456187794324941 -2.951575256081011
+
+
